@@ -53,7 +53,14 @@ def send_thank_you():
                 
             
 def create_report():
+    header = ["Donor Name", "Total Given", "Num Gifts", "Average Gift"]
+    format_row = "{:>12}" * (len(header) + 1)
+    print(format_row.format("", *header))
+    f = '{:<10}|{:<3}|{:<15}'   # format
+    print('Donor Name      |Total Given|Num Gifts|Average Gift')
     for i,v in donor_db:
+        print(f.format(*i,v))
+        #print(f.format(i, str(sum(v)) + str(len(v)) + str(sum(v)/len(v))))
         print('Donorname '+ "\n" + i, ' donation amount of $' + str(sum(v)) + ' with total of number gifts: ' + str(len(v)) + ' and average number of gifts: ' + str(sum(v)/len(v)))
       
 
